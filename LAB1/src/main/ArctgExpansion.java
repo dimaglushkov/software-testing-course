@@ -1,8 +1,6 @@
 package main;
 
-import java.io.IOException;
-
-public class Task1 {
+public class ArctgExpansion {
     private static final int n = 1000;
 
     public static double expanse(double x) throws IllegalArgumentException {
