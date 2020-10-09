@@ -1,8 +1,8 @@
-package test;
+package test.lab1;
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
-import main.ArctgExpansion;
+import main.lab1.ArctgExpansion;
 
 
 class Task1Test {

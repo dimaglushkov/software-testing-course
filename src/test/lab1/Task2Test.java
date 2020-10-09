@@ -1,25 +1,25 @@
-package test;
+package test.lab1;
 
-import main.Graph;
+import main.lab1.Graph;
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 public class Task2Test {
     @Test
-    void TestEmptyGraph(){
+    void testEmptyGraph(){
         Graph g = new Graph(0);
         assertEquals("", g.BFS(0));
     }
 
     @Test
-    void TestOneVertexGraph(){
+    void testOneVertexGraph(){
         Graph g = new Graph(1);
         assertEquals("0", g.BFS(0));
     }
 
     @Test
-    void TestThreeVertexGraphFromZero(){
+    void testThreeVertexGraphFromZero(){
         Graph g = new Graph(3);
         g.addEdge(0, 1);
         g.addEdge(1, 2);
@@ -28,7 +28,7 @@ public class Task2Test {
     }
 
     @Test
-    void TestThreeVertexGraphFromOne(){
+    void testThreeVertexGraphFromOne(){
         Graph g = new Graph(3);
         g.addEdge(0, 1);
         g.addEdge(1, 2);
@@ -37,7 +37,7 @@ public class Task2Test {
     }
 
     @Test
-    void TestEightVertexGraph(){
+    void testEightVertexGraph(){
         Graph g = new Graph(8);
         g.addEdge(0, 1);
         g.addEdge(0, 4);

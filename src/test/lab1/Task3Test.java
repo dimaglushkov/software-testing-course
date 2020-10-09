@@ -1,11 +1,10 @@
-package test;
+package test.lab1;
 
-import main.task3.*;
+import main.lab1.task3.*;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -13,73 +12,21 @@ import static org.junit.jupiter.api.Assertions.*;
 public class Task3Test {
 
     @Test
-    void test(){
-        Arthur arthur = new Arthur();
-        Stranger stranger = new Stranger();
-        Armchair armchair = new Armchair();
-        ControlPanel controlPanel = new ControlPanel();
-        Things things = new Things();
-
-        ByteArrayOutputStream functionOutput = new ByteArrayOutputStream();
-        PrintStream ps = new PrintStream(functionOutput);
-        PrintStream defaultStream = System.out;
-        System.setOut(ps);
-
-        arthur.changeNervosity();
-        arthur.follow();
-        arthur.shocked();
-        arthur.see(stranger);
-        stranger.chill(armchair);
-        stranger.putLegs(controlPanel);
-        stranger.poke(stranger.heads.get("right").jaw);
-        stranger.heads.get("right").busy();
-        stranger.heads.get("left").smile();
-        arthur.see(things);
-        things.increase();
-        arthur.head.jaw.sag();
-        arthur.totallyShocked();
-
-        System.out.flush();
-        System.setOut(defaultStream);
-        String[] lines = functionOutput.toString().split("\n");
-        String[] mustContain = {
-                "нерв",
-                "вошел",
-                "ошеломлен",
-                "увидел человек",
-                "располагается на кресл",
-                "кладет ноги",
-                "ковыряется в челюсть",
-                "правая голова занят",
-                "левая голова широко улыбается",
-                "Артур увидел",
-                "количество вещи растет",
-                "челюсть Артура отвисла",
-                "не верит своим глазам"
-        };
-
-        assertEquals(mustContain.length, lines.length);
-        for (int i = 0; i < lines.length; i++)
-            assertTrue(lines[i].contains(mustContain[i].replace("\n", "")));
-
-    }
-
-    @Test
     void testThingsIncrease(){
         Things things = new Things();
-        int init_num_of_things = things.getNumber();
+        int initNumOfThings = things.getNumber();
         things.increase();
-        assertEquals(init_num_of_things + 1, things.getNumber());
+        assertEquals(initNumOfThings + 1, things.getNumber());
     }
 
     @Test
     void testNervosity(){
         Arthur arthur = new Arthur();
-        boolean init_nervosity = arthur.isNervous();
+        boolean initNervosity = arthur.isNervous();
         arthur.changeNervosity();
-        assertEquals(!init_nervosity, arthur.isNervous());
+        assertEquals(!initNervosity, arthur.isNervous());
         arthur.changeNervosity();
-        assertEquals(init_nervosity, arthur.isNervous());
+        assertEquals(initNervosity, arthur.isNervous());
     }
 
     @Test

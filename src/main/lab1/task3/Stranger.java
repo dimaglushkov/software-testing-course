@@ -1,4 +1,4 @@
-package main.task3;
+package main.lab1.task3;
 
 import java.util.HashMap;
 import java.util.Map;

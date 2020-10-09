@@ -1,6 +1,5 @@
-package main;
+package main.lab1;
 
-import java.io.*;
 import java.util.*;
 
 
