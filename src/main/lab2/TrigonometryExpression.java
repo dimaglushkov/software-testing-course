@@ -1,9 +1,10 @@
 package main.lab2;
+import static main.lab2.SinExpansion.*;
 
-public class TrigonometryExpression extends SinExpansion{
+public class TrigonometryExpression{
 
     public static double cos(double x, double eps){
-        return Math.pow((1 - Math.pow(sin(x, eps), 2)), 0.5);
+        return sin(x + Math.PI / 2, eps);
     }
 
     public static double sec(double x, double eps){

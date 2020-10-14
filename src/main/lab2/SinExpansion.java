@@ -1,6 +1,5 @@
 package main.lab2;
 
-import java.util.stream.LongStream;
 
 public class SinExpansion {
 
@@ -12,11 +11,18 @@ public class SinExpansion {
         int i = 0;
         do {
             previousResult = result;
-            result += (Math.pow(-1, i) * Math.pow(x, (2 * i + 1))) / (LongStream.rangeClosed(1, 2*i).reduce(1, (a, b) -> (a + 1) * b));
+            result += (Math.pow(-1, i) * Math.pow(x, (2 * i + 1))) / factorial(2 * i + 1);
             i++;
         } while(Math.abs(previousResult - result) > eps);
 
         return result;
+    }
+
+    private static double factorial(int x) {
+        double val = 1;
+        for (int i = 2; i <= x; i++)
+            val *= i;
+        return val;
     }
 
 }

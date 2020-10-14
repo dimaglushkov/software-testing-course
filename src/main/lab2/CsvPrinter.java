@@ -8,14 +8,10 @@ import java.util.TreeMap;
 import au.com.bytecode.opencsv.CSVWriter;
 
 public class CsvPrinter {
-    private static double EPS = 0.0001;
 
-    interface FunctionInterface {
-        double run(double x, double eps);
-    }
-
-    private static TreeMap<Double, Double> getValues(FunctionInterface method, double step, double xLength) throws InvocationTargetException, IllegalAccessException {
+    private static TreeMap<Double, Double> getValues(FunctionalInterface method, double step, double xLength) throws InvocationTargetException, IllegalAccessException {
         TreeMap<Double, Double> values = new TreeMap<>();
+        double EPS = 0.0001;
         for (double i = - xLength / 2; i < xLength / 2; i += step){
             double value = (double) method.run(i, EPS);
             values.put(i, value);
@@ -23,7 +19,7 @@ public class CsvPrinter {
         return values;
     }
 
-    public static void print(FunctionInterface method, double step, double xLength){
+    public static void print(FunctionalInterface method, double step, double xLength){
         try {
             TreeMap<Double, Double> values = getValues(method, step, xLength);
 
