@@ -3,7 +3,7 @@ package main.lab2;
 public class NaturalLogarithmExpansion {
     
     public static double ln(Double x, Double eps) throws IllegalArgumentException{
-        if (x.isInfinite() || x.isNaN() || eps.isNaN() || eps.isInfinite() || eps == 0. || x <= 0)
+        if (x.isInfinite() || x.isNaN() || eps.isNaN() || eps.isInfinite() || eps == 0. || x <= eps)
             throw new IllegalArgumentException();
 
         double previousResult, result = 0;

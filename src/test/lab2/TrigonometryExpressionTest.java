@@ -3,19 +3,17 @@ package test.lab2;
 import main.lab2.SinExpansion;
 import main.lab2.TrigonometryExpression;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.MockedStatic;
-import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static java.lang.Math.*;
 import static org.mockito.Mockito.*;
 
-@ExtendWith(MockitoExtension.class)
 public class TrigonometryExpressionTest {
     static final double EPS = 0.0001;
+    static final double DELTA = 0.001;
 
     @BeforeAll
     static void setup() {
