@@ -52,6 +52,12 @@ public class HomePageTest {
 
     @ParameterizedTest
     @ArgumentsSource(WebdriverArgumentsProvider.class)
+    void questionAuthorTest(HomePage page) {
+        assertEquals("https://www.answers.com/page/wiki-users", page.getQuestionAuthor());
+    }
+
+    @ParameterizedTest
+    @ArgumentsSource(WebdriverArgumentsProvider.class)
     void logoutTest(HomePage page) {
         assertTrue(page.logout());
     }
@@ -66,8 +72,7 @@ public class HomePageTest {
         @Override
         public Stream<? extends Arguments> provideArguments(ExtensionContext extensionContext) throws Exception {
             return Stream.of(
-                    Arguments.of(firefoxHomePage),
-                    Arguments.of(chromeHomePage)
+                    Arguments.of(firefoxHomePage)
             );
         }
     }

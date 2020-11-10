@@ -21,6 +21,8 @@ public class HomePage {
     static final String submitButtonXpath = "/html/body/div[3]/div[3]/div/div/form/button";
     static final String loginMenuXpath = "/html/body/div[1]/div/div/div[1]/div[1]/div/div/div[2]/span/button";
     static final String logoutButtonXpath = "/html/body/div[3]/div[3]/ul/li[3]/p/a";
+    static final String questionAuthor = "/html/body/div[1]/div/div/div[1]/div[2]/div[1]/div[2]/div/div[2]/div[1]/div[2]/div[1]/a[2]";
+
 
     public HomePage(WebDriver webDriver) {
         this.webDriver = webDriver;
@@ -58,6 +60,15 @@ public class HomePage {
         webDriver.findElement(By.xpath(submitButtonXpath)).click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(loginMenuXpath)));
         return true;
+    }
+
+    public String getQuestionAuthor(){
+        WebDriverWait wait = new WebDriverWait(webDriver,20);
+        webDriver.get(pageUrl);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(questionAuthor)));
+
+        webDriver.findElement(By.xpath(questionAuthor)).click();
+        return webDriver.getCurrentUrl();
     }
 
     public Boolean logout(){

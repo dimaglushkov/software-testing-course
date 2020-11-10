@@ -10,10 +10,10 @@ public class QuestionsPage extends HomePage {
     final static String createQuestionButtonXPath = "/html/body/div[1]/div/div/div[1]/div[1]/div/div/div[2]/button";
     final static String questionTextFieldXPath = "/html/body/div[3]/div[3]/div/div[2]/div[1]/div/textarea";
     final static String questionSubmitXPath = "/html/body/div[3]/div[3]/div/div[2]/button[2]";
+    final static String questionAuthorXPath = "/html/body/div[1]/div/div/div[1]/div[2]/div[1]/div[2]/div[1]/div[1]/div[2]/div/a[2]";
     final static String answerQuestionButtonXPath = "/html/body/div[1]/div/div/div[1]/div[2]/div[1]/div[2]/div[1]/div[1]/div[3]/div/button";
     final static String answerTextFieldXPath = "/html/body/div[3]/div[3]/div/div[2]/div[1]/div[1]/div[2]/div";
     final static String answerSubmitXPath = "/html/body/div[3]/div[3]/div/div[2]/button";
-    final static String answerDownvoteXPath = "/html/body/div[1]/div/div/div[1]/div[2]/div[1]/div[2]/div[1]/div[2]/div[4]/div/div[2]/div[1]";
 
     public QuestionsPage(WebDriver webDriver) {
         super(webDriver);
@@ -45,6 +45,16 @@ public class QuestionsPage extends HomePage {
         webDriver.findElement(By.xpath(answerSubmitXPath)).click();
 
         return true;
+    }
+
+    public String getQuestionAuthor(String questionUrl){
+        WebDriverWait wait = new WebDriverWait(webDriver,10);
+        webDriver.get(questionUrl);
+
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(questionAuthorXPath)));
+        webDriver.findElement(By.xpath(questionAuthorXPath)).click();
+
+        return webDriver.getCurrentUrl();
     }
 
 }

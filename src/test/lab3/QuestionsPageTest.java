@@ -43,6 +43,12 @@ public class QuestionsPageTest {
         assertNotEquals("https://www.answers.com", latestQuestion);
     }
 
+    @ParameterizedTest
+    @ArgumentsSource(WebdriverArgumentsProvider.class)
+    void getQuestionAuthorTest(QuestionsPage page) {
+        assertEquals("https://www.answers.com/u/trshmil", page.getQuestionAuthor(latestQuestion));
+    }
+
     @AfterAll
     static void closeup() {
         FirefoxDriverInitializer.getWebDriver().close();
@@ -53,8 +59,7 @@ public class QuestionsPageTest {
         @Override
         public Stream<? extends Arguments> provideArguments(ExtensionContext extensionContext) throws Exception {
             return Stream.of(
-                    Arguments.of(firefoxHomePage),
-                    Arguments.of(chromeHomePage)
+                    Arguments.of(firefoxHomePage)
             );
         }
     }
