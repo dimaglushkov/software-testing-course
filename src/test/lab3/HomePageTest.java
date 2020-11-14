@@ -10,6 +10,7 @@ import test.lab3.pages.ChromeDriverInitializer;
 import test.lab3.pages.FirefoxDriverInitializer;
 import test.lab3.pages.HomePage;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 import static org.junit.jupiter.api.Assertions.*;
@@ -22,7 +23,7 @@ public class HomePageTest {
     @BeforeAll
     static void setup() {
         firefoxHomePage = new HomePage(FirefoxDriverInitializer.getWebDriver());
-        chromeHomePage = new HomePage(ChromeDriverInitializer.getWebDriver());
+//        chromeHomePage = new HomePage(ChromeDriverInitializer.getWebDriver());
     }
 
     @ParameterizedTest
@@ -62,10 +63,34 @@ public class HomePageTest {
         assertTrue(page.logout());
     }
 
+    @ParameterizedTest
+    @ArgumentsSource(WebdriverArgumentsProvider.class)
+    void footerTest(HomePage page) {
+        List<String> expectedFooterLinks = new ArrayList<>();
+        expectedFooterLinks.add("https://www.answers.com/page/about");
+        expectedFooterLinks.add("https://blog.answers.com/");
+        expectedFooterLinks.add("https://www.answers.com/page/cookie_policy");
+        expectedFooterLinks.add("https://www.answers.com/page/contact-us");
+        expectedFooterLinks.add("https://www.answers.com/page/copyright");
+        expectedFooterLinks.add("https://www.answers.com/page/privacy#4");
+        expectedFooterLinks.add("https://www.answers.com/page/terms-of-use");
+        expectedFooterLinks.add("https://www.answers.com/page/disclaimer");
+        expectedFooterLinks.add("https://multiplystl.typeform.com/to/M6Dy5g");
+        expectedFooterLinks.add("https://www.answers.com/page/privacy");
+        expectedFooterLinks.add("https://blog.answers.com/answers-community-guidelines/");
+
+        List<String> actualFooterLinks = page.getFooterLinks();
+
+        for (int i = 0; i < actualFooterLinks.size(); i++){
+            assertEquals(expectedFooterLinks.get(i), actualFooterLinks.get(i));
+        }
+
+    }
+
     @AfterAll
     static void closeup() {
         FirefoxDriverInitializer.getWebDriver().close();
-        ChromeDriverInitializer.getWebDriver().close();
+//        ChromeDriverInitializer.getWebDriver().close();
     }
 
     static class WebdriverArgumentsProvider implements ArgumentsProvider {
